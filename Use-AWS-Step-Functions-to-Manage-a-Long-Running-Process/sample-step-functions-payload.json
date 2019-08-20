@@ -1,0 +1,6 @@
+{
+    "Input": {
+        "Bucket": "my-bucket-name",
+        "Key": "audio-file.m4a"
+    }
+}

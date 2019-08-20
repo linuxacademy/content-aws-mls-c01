@@ -1,0 +1,34 @@
+,
+    "transcribe-wait":{
+        "Type":"Wait",
+        "Seconds":2,
+        "Next":"transcribe-status"
+    },
+    "transcribe-status": {
+        "Type": "Pass",
+        "Next": "transcribe-complete"
+    },
+    "transcribe-complete":{
+        "Type":"Choice",
+        "Choices":[
+            {
+                "Variable":"$.Payload.TranscriptionJobStatus",
+                "StringEquals":"COMPLETED",
+                "Next":"success"
+            },
+            {
+                "Variable":"$.Payload.TranscriptionJobStatus",
+                "StringEquals":"FAILED",
+                "Next":"error"
+            }
+        ],
+        "Default":"transcribe-wait"  
+    },
+    "success": {
+        "Type": "Pass",
+        "End": true
+    },
+    "error": {
+        "Type": "Pass",
+        "End": true
+    }

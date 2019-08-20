@@ -1,0 +1,29 @@
+,
+    "process-transcript":{
+    "Type":"Parallel",
+    "Branches":[
+        {
+            "StartAt":"comprehend",
+            "States":{
+                "comprehend":{
+                "Type": "Pass",
+                "End":true
+                }
+            }
+        },
+        {
+            "StartAt":"translate",
+            "States":{
+                "translate":{
+                    "Type": "Pass",
+                    "End":true
+                }
+            }
+        }
+    ],
+    "Next":"polly"
+    },
+    "polly":{
+        "Type": "Pass",
+        "End":true
+    },

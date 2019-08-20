@@ -1,0 +1,8 @@
+"Type":"Task",
+"Resource":"arn:aws:states:::lambda:invoke",
+"Parameters":{
+    "FunctionName":"**ARN**",
+    "Payload":{
+        "Input.$":"$"
+    }
+},

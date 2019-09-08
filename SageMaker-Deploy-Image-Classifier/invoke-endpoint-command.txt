@@ -1,0 +1,1 @@
+aws sagemaker-runtime invoke-endpoint --endpoint-name pinehead --body fileb://ph-test.png --profile [PROFILE-NAME] ./man-outfile.json

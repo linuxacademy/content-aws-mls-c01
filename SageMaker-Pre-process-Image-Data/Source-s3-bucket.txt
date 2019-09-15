@@ -1,1 +1,3 @@
 Source bucket : images-f6tgyuqwedfsiuhidsa
+
+To look at the bucket in the AWS Console you can direct link here: https://s3.console.aws.amazon.com/s3/buckets/images-f6tgyuqwedfsiuhidsa

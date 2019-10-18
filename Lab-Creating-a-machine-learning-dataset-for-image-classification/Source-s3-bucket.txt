@@ -1,0 +1,3 @@
+Source bucket : 'linuxacademy-lab-files' in folder/prefix 'machine-learning'
+
+Value to include in the notebook code, in place of [INPUT_BUCKET_NAME_AND_PATH]: sagemaker-lab-stage-1-raw-images/

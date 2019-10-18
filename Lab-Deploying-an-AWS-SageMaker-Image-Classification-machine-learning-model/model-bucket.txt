@@ -1,2 +1,3 @@
 name: sagemaker-lab-stage-3-model
 link: https://s3.console.aws.amazon.com/s3/buckets/sagemaker-lab-stage-3-model/?region=us-east-1&tab=overview
+Training image: 811284229777.dkr.ecr.us-east-1.amazonaws.com/image-classification:1

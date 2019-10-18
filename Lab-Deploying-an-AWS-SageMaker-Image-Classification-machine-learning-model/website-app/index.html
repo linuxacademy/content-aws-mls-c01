@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(104, 104, 104);
+      }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/load-image.all.min.js"></script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-light bg-primary">
+        <span class="navbar-brand mb-0 h1">Pinehead / NotPinehead</span>
+    </nav>
+
+    <canvas id="imageCanvas" width="225" height="225" style="width: 100%;"></canvas>
+
+    <div class="d-flex justify-content-center">
+        <div id="spinner-loading" class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <nav id="banner-pinehead" class="navbar navbar-light bg-success">
+        <span class="navbar-brand mb-0 h1">Pinehead</span>
+    </nav>
+
+    <nav id="banner-notpinehead"  class="navbar navbar-light bg-warning">
+        <span class="navbar-brand mb-0 h1">NotPinehead</span>
+    </nav>
+
+    <nav id="banner-placeholder"  class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">&nbsp;</span>
+    </nav>
+
+    <div class="input-group mb-3">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon01" accept="image/*" id="imageLoader" name="imageLoader">
+          <label class="custom-file-label" for="inputGroupFile01">Take photo</label>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+
+  </body>
+
+</html>      

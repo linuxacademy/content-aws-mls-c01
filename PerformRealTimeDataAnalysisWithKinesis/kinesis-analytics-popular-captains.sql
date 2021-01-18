@@ -1,0 +1,8 @@
+CREATE OR REPLACE STREAM "CAPTAIN_SCORES" ("favoritecaptain" VARCHAR(32), average_rating DOUBLE, total_rating INTEGER);
+
+CREATE OR REPLACE PUMP "STREAM_PUMP" AS
+INSERT INTO "CAPTAIN_SCORES"
+SELECT STREAM "favoritecaptain", avg("rating") as average_rating, sum("rating") as total_rating
+FROM "SOURCE_SQL_STREAM_001"
+GROUP BY "favoritecaptain", STEP("SOURCE_SQL_STREAM_001".ROWTIME BY INTERVAL '1' MINUTE)
+ORDER BY STEP("SOURCE_SQL_STREAM_001".ROWTIME BY INTERVAL '1' MINUTE), avg("rating") DESC;

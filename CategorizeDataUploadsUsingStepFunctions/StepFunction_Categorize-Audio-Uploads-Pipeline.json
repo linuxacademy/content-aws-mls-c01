@@ -1,0 +1,63 @@
+{
+  "Comment": "Categorize audio clips by the content of their transcripts",
+  "StartAt": "Transcribe Audio",
+  "States": {
+    "Transcribe Audio": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:REGION:ACCOUNTID:function:transcribe-audio-lambda:$LATEST",
+        "Payload": {
+          "Input.$": "$"
+        }
+      },
+      "Next": "Wait for Transcribe"
+    },
+    "Wait for Transcribe": {
+      "Type": "Wait",
+      "Seconds": 60,
+      "Next": "Check Transcribe Status"
+    },
+    "Check Transcribe Status": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:REGION:ACCOUNTID:function:transcribe-status-lambda:$LATEST",
+        "Payload": {
+          "Input.$": "$"
+        }
+      },
+      "Next": "Is Transcribe Finished"
+    },
+    "Is Transcribe Finished": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.Payload.TranscriptionJobStatus",
+          "StringEquals": "COMPLETED",
+          "Next": "Categorize Data"
+        },
+        {
+          "Variable": "$.Payload.TranscriptionJobStatus",
+          "StringEquals": "FAILED",
+          "Next": "Transcribe Failed"
+        }
+      ],
+      "Default": "Wait for Transcribe"
+    },
+    "Categorize Data": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:REGION:ACCOUNTID:function:categorize-data-lambda:$LATEST",
+        "Payload": {
+          "Input.$": "$"
+        }
+      },
+      "End": true
+    },
+    "Transcribe Failed": {
+      "Type": "Fail"
+    }
+  }
+}
